@@ -100,18 +100,25 @@ class Scanner
 			Token.new(Token::INT,str)
 
 		elsif (@c == "(")
+			nextCh()
 			Token.new(Token::LPAREN, "(")
 		elsif (@c == ")")
+			nextCh()
 			Token.new(Token::RPAREN, ")")
 		elsif (@c == "+")
+			nextCh()
 			Token.new(Token::ADDOP, "+")
 		elsif (@c == "-")
+			nextCh()
 			Token.new(Token::SUBOP, "-")
 		elsif (@c == "/")
+			nextCh()
 			Token.new(Token::DIVOP, "/")
 		elsif (@c == "*")
+			nextCh()
 			Token.new(Token::MULTOP, "*")
 		elsif (@c == "=")
+			nextCh()
 			Token.new(Token::ASSGN, "=")
 		# elsif ...
 		# more code needed here! complete the code here
@@ -132,6 +139,7 @@ class Scanner
 		# this scanner. You could also choose to define
 		# this "type" of token in your token class
 		else
+			nextCh()
 			tok = Token.new(Token::UNKNOWN,"unknown")
 		end
 
