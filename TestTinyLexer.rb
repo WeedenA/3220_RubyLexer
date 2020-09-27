@@ -12,20 +12,20 @@ load "./TinyScanner.rb"
 scan = Scanner.new("input.tiny")
 tok = scan.nextToken()
 
-# the code below will open a file so that I 
+# the code below will open a file so that I
 # can save tokens to it
 tokenFile = File.open("tokens", "w")
 
 # keep "fetching" one token at a time, using your scanner
-# until there are no tokens left to scan 
+# until there are no tokens left to scan
 while (tok.get_type() != Token::EOF)
-   
+
    # The instruction below writes your token into a file.
    tokenFile.puts"#{tok}"
-   
+
    # get the next token available (if there is one)
    tok = scan.nextToken()
-end 
+end
 
 # There should be one token left (see the boolean condition above)
 # putting the last token in the file and closing the file
