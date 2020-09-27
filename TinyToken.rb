@@ -21,7 +21,7 @@ class Token
 	ASSGN = "="
 	PRINT = "print"
 	INT = "integer"
-	IDNT = "alphaIdentifier"
+	IDENT = "alphaIdentifier"
 
 # add the rest of the tokens needed based on the grammar
 # specified in the Scanner class "TinyScanner.rb"
