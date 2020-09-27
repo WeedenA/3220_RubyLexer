@@ -32,7 +32,7 @@ class Scanner
 		if File.exist?(filename)
 			@f = File.open(filename,'r:utf-8')
 		else
-			puts "File" + filename + " does not exist. Closing Lexer."
+			puts "File \"" + filename + "\" does not exist. Closing Lexer."
 			exit(1)
 		end
 
@@ -74,6 +74,45 @@ class Scanner
 
 			tok = Token.new(Token::WS,str)
 			return tok
+
+		elsif (letter?(@c))
+			str = ""
+
+			while letter?(@c)
+				str += @c
+				nextCh()
+			end
+
+			if str == "print"
+				tok = Token.new(Token::PRINT,str)
+			else
+				tok = Token.new(Token::ID,str)
+			end
+
+		elsif (numeric?(@c))
+			str = ""
+
+			while numeric?(@c)
+				str += @c
+				nextCh()
+			end
+
+			Token.new(Token::INT,str)
+
+		elsif (@c == "(")
+			Token.new(Token::LPAREN, "(")
+		elsif (@c == ")")
+			Token.new(Token::RPAREN, ")")
+		elsif (@c == "+")
+			Token.new(Token::ADDOP, "+")
+		elsif (@c == "-")
+			Token.new(Token::SUBOP, "-")
+		elsif (@c == "/")
+			Token.new(Token::DIVOP, "/")
+		elsif (@c == "*")
+			Token.new(Token::MULTOP, "*")
+		elsif (@c == "=")
+			Token.new(Token::ASSGN, "=")
 		# elsif ...
 		# more code needed here! complete the code here
 		# so that your scanner can correctly recognize,
@@ -92,7 +131,8 @@ class Scanner
 		# create an "unknown" token directly from
 		# this scanner. You could also choose to define
 		# this "type" of token in your token class
-		tok = Token.new(Token::UNKNOWN,"unknown")
+		else
+			tok = Token.new(Token::UNKNOWN,"unknown")
 		end
 
 end
