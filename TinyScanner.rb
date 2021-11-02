@@ -120,24 +120,6 @@ class Scanner
 		elsif (@c == "=")
 			nextCh()
 			Token.new(Token::ASSGN, "=")
-		# elsif ...
-		# more code needed here! complete the code here
-		# so that your scanner can correctly recognize,
-		# print (to a text file), and display all tokens
-		# in our grammar that we found in the source code file
-
-		# FYI: You don't HAVE to just stick to if statements
-		# any type of selection statement "could" work. We just need
-		# to be able to programatically identify tokens that we
-		# encounter in our source code file.
-
-		# don't want to give back nil token!
-		# remember to include some case to handle
-		# unknown or unrecognized tokens.
-		# below is an example of how you "could"
-		# create an "unknown" token directly from
-		# this scanner. You could also choose to define
-		# this "type" of token in your token class
 		else
 			nextCh()
 			tok = Token.new(Token::UNKNOWN,"unknown")
